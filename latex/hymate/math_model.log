@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.1.21)  8 MAY 2025 05:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2025.1.21)  26 JUN 2025 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -221,11 +221,11 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<diagram.png, id=1, 489.32813pt x 307.1475pt>
+<diagram.png, id=1, 920.68968pt x 572.1375pt>
 File: diagram.png Graphic file (type png)
 <use diagram.png>
 Package pdftex.def Info: diagram.png  used on input line 25.
-(pdftex.def)             Requested size: 452.9679pt x 284.33194pt.
+(pdftex.def)             Requested size: 452.9679pt x 281.49347pt.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./diagram.png (PNG cop
@@ -269,7 +269,7 @@ cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/shar
 e/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on math_model.pdf (6 pages, 368338 bytes).
+Output written on math_model.pdf (6 pages, 474776 bytes).
 PDF statistics:
  138 PDF objects out of 1000 (max. 8388607)
  86 compressed objects within 1 object stream

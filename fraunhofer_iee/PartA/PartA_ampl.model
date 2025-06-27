@@ -1,0 +1,62 @@
+reset;
+
+# define sets
+set T ordered;
+
+# define parameters
+param conso {T} >= 0;
+param lcos {T} >= 0;
+param sell {T} >= 0;
+param buy {T} >= 0;
+param pv {T} >= 0;
+param charging_efficiency;
+param charge_capacity_value;
+param max_charge_value;
+param max_discharge_value;
+param max_sell_grid_value;
+param max_buy_grid_value;
+
+# define variables
+var gc {t in T} >= 0; # Grid to consumer
+var bg {t in T} >= 0; # Battery to grid"
+var bc {t in T} >= 0; # Battery to consumer
+var gb {t in T} >= 0; # Grid to battery
+var pvg {t in T} >= 0; # PV to grid
+var pvc {t in T} >= 0; # PV to consumer
+var pvb {t in T} >= 0; # PV to battery
+var charge_level {t in T} >= 0; # Level of charge in battery
+
+# define objective function 
+minimize cost :
+	sum {t in T} buy[t]*(gc[t] + gb[t]) -
+	sum {t in T} sell[t]*(pvg[t] + bg[t]) +
+	sum {t in T} lcos[t]*(pvb[t] + gb[t]);
+
+# define constraints
+subject to photovoltaic {t in T}:
+	pvg[t] + pvc[t] + pvb[t] <= pv[t];
+
+subject to charge_evolution {t in T}:
+	charge_level[t] =
+		if t = first(T) then
+			charging_efficiency*(gb[t] + pvb[t]) - (bc[t] + bg[t])
+		else
+			charge_level[t - 1] + charging_efficiency*(gb[t] + pvb[t]) - (bc[t] + bg[t]);		
+
+subject to charge_capacity {t in T}:
+	charge_level[t] <= charge_capacity_value;	
+
+subject to max_charge {t in T}:
+	gb[t] + pvb[t] <= max_charge_value;
+
+subject to max_discharge {t in T}:
+	bg[t] + bc[t] <= max_discharge_value;
+
+subject to max_sell_grid {t in T}:
+	bg[t] + pvg[t] <= max_sell_grid_value;
+
+subject to max_buy_grid {t in T}:
+	gb[t] + gc[t] <= max_buy_grid_value;
+
+subject to consumption {t in T}:
+	gc[t] + pvc[t] + bc[t] = conso[t];
