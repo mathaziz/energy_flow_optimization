@@ -29,7 +29,7 @@ subprocess.run(f"mkdir -v {folder_plots}", shell=True)
 filename = "test_data.xlsx"
 print(f"Reading data from {filename}")
 input_data = pd.read_excel(filename)
-input_data.columns = ["time", "pv", "consumption", "lcos", "sell", "buy"] #
+input_data.columns = ["time", "pv", "consumption", "lcos", "sell", "buy"] 
 input_data.head()
 
 # Plot of the input data

@@ -1,5 +1,5 @@
 /*======================================
-AMPL model for Part A
+AMPL model for Part B
 =======================================*/
 
 reset;
@@ -21,6 +21,7 @@ param max_charge_value;
 param max_discharge_value;
 param max_sell_grid_value;
 param max_buy_grid_value;
+param big_M;
 
 # define variables
 # ----------------
@@ -32,6 +33,8 @@ var pvg {t in T} >= 0; # PV to grid
 var pvc {t in T} >= 0; # PV to consumer
 var pvb {t in T} >= 0; # PV to battery
 var charge_level {t in T} >= 0; # Level of charge in battery
+var to_buy {t in T} binary; # Decision variable on whether to buy from grid or not
+var to_sell {t in T} binary; # Decision variable on whether to sell from grid or not"
 
 # define objective function 
 # ------------------------
@@ -78,3 +81,15 @@ subject to max_buy_grid {t in T}:
 # We need to satisfy the demand of the consumer
 subject to consumption {t in T}:
 	gc[t] + pvc[t] + bc[t] = conso[t];
+
+# We either buy or sell: only one of the two variables can be 1
+subject to buy_or_sell {t in T}:
+	to_buy[t] + to_sell[t] <= 1;
+
+# If to_buy == 0 we do not buy; we use the Big-M method
+subject to do_buy {t in T}:
+	gb[t] + gc[t] <= to_buy[t]*big_M;
+
+# If to_sell == 0 we do not sell; we use the Big-M method
+subject to do_sell {t in T}:
+	bg[t] + pvg[t] <= to_sell[t]*big_M;
