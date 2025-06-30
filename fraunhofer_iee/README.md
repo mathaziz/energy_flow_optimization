@@ -1,4 +1,4 @@
-# Energy Flow Optimization
+# Energy Flow Optimization using AMPL
 
 This project solves an instance of Energy Flow Optimization using **AMPL**. It provides a model and solution to all three parts of the technical task given to me by [hymate](https://www.hymate.com/) preceding an interview. The task deals with optimizing energy flows within a system comprising a photovoltaic system, an electrical battery, a grid connection, and a consumer. The problem statement and instructions can be found in the `instructions.pdf` file.
 
@@ -6,8 +6,7 @@ This project solves an instance of Energy Flow Optimization using **AMPL**. It p
 
 The implementation is done in Python 3 and uses the following libraries: numpy, pandas, matplotlib, and amplpy. It is advised to use Conda to manage the different packages and their version dependencies.
 
-1. **Install Conda**:
-   - Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). Miniconda is sufficient and can be downloaded from this [link](https://repo.anaconda.com/miniconda/).
+1. Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). Miniconda is sufficient and can be downloaded from this [link](https://repo.anaconda.com/miniconda/).
 
 2. **Create and Activate Environment**:
    ```bash
