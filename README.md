@@ -1,50 +1,35 @@
 # Energy Flow Optimization
 
-This repository provides an example of Energy Flow Optimization, where we optimize energy flows in a system consisting of a 1) photovoltaic (PV) system, 2) an electrical battery, 3) a connection to the external electrical grid and 4) a consumer. The objective is to meet the predicted electrical energy consumption while minimizing costs.
+This repository provides an example of Energy Flow Optimization, where we optimize energy flows in a system consisting of a photovoltaic (PV) system, an electrical battery, a connection to the external electrical grid, and a consumer. The objective is to meet the predicted electrical energy consumption while minimizing costs.
 
-## Dependencies
+The project is part of a technical task for an interview process with [hymate](https://www.hymate.com/). The problem statement can be found in the `instructions_hymate.pdf` file, and the data for the problem instance is in the `test_data.xlsx` file.
 
-The implementation is done in Python 3 and uses the following libraries: pandas, pyomo, numpy, matplotlib, and glpk. It is advised to use Conda to manage the different packages and their version dependencies.
+## Solutions
 
-1. **Install Conda**:
-   - Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html). Miniconda is sufficient, and you do not need to register if you get it from this [link](https://repo.anaconda.com/miniconda/).
+Two solutions to the problem are provided:
 
-2. **Create and Activate Environment**:
+1. **hymate**: The original solution solved using [Pyomo](https://www.pyomo.org/).
+2. **Fraunhofer IEE**: Another implementation of the solution using [AMPL](https://ampl.com/).
 
-   ```bash
-   conda create --name enflo
-   conda activate enflo
-   ```
-Here enflo is the name of the environment, feel free to adapt it.
+## Files
 
-3. **Install Python Packages**:
+In the root directory, you can find the following files and directories:
 
-   ```bash
-   conda install numpy matplotlib pandas conda-forge::pyomo conda-forge::glpk
-   ```
+- `fraunhofer_iee/`: The folder containing the **Fraunhofer IEE** solution.
+- `hymate/`: The folder containing the **hymate** solution.
+- `latex/`: The LaTeX files for the reports found in the solution folders.
+- `instructions_hymate.pdf`: Problem statement and details of the technical task.
+- `license.txt`: The license of the project.
+- `README.md`: This file.
+- `test_data.xlsx`: Data for the problem instance.
 
 ## Usage
 
-To run the program, follow these steps:
+Visit each subfolder corresponding to the solution of interest. Inside each folder, you will find specific instructions on how to set up and run the solution.
 
-1. **Navigate to the Project Directory**: Open a terminal and navigate to the folder containing the project.
-   ```bash
-   cd path_to_project/partA/
-   ```
-Replace `path_to_project` with the actual path to your project directory.
+## License
 
-2. **Check Input Files**: Ensure the folder contains an adequate `test_data.xlsx` file. A copy of the file can be found in the root directory.
-
-3. **Execute the Program**: Run the following command:
-   ```bash
-   python energy_flow_optimization_partA.py
-   ```
-
-4. **Review Outputs**: Ensure that the program was executed correctly by checking the output message generated and the plots saved into the `plots\` folder.
-
-## Mathematical model
-
-Please read the file *math_model.pdf* for information about the proposed mathematical model.
+This project is released under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the license terms.
 
 ## Author & Contact
 
@@ -54,3 +39,7 @@ For any questions or feedback, please feel free to reach out:
 
 - Email: [abdellazizamine@posteo.net](mailto:abdellazizamine@posteo.net)
 - GitHub: [@mathaziz](https://github.com/mathaziz)
+
+## Acknowledgments
+
+The problem statement and instructions in `instructions_hymate.pdf`, and the data in `test_data.xlsx`, are the property of [hymate](https://www.hymate.com/) and are reproduced here with permission.

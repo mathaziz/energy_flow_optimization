@@ -85,7 +85,7 @@ if args.part in ['B', 'C']:
 if args.part == 'C':
     ampl.param["packet_size"] = 100
     ampl.param["battery_extension_amount"] = 100
-    ampl.param["battery_extension_cost"] = 100
+    ampl.param["battery_extension_cost"] = 1000
     
 # set solver und solve
 ampl.solve(solver=SOLVER)
@@ -174,7 +174,7 @@ fig.savefig(folder_plots + "pv_output.svg")
 
 # Battery
 x = input_data["time"]
-fig, axs = plt.subplots(1, 3, sharey = True, figsize = (3*5, 5))
+fig, axs = plt.subplots(1, 2, figsize = (2*5, 5))
 # Charge level
 axs[0].plot(x, capacity_list, color = 'r', ls = ":", label = "Capacity")
 axs[0].stackplot(x, charge_list, color = color_scheme["B"])
@@ -182,43 +182,43 @@ axs[0].set_title("Charge level")
 axs[0].set_ylabel("kWh")
 axs[0].set_xlabel("Time")
 axs[0].legend()
-# Input
+# Input $ output
 axs[1].plot(x, gb_list, color = color_scheme["G"], label = "from Grid")
 axs[1].plot(x, pvb_list, color = color_scheme["PV"], label = "from PV")
-axs[1].set_title("Input")
+axs[1].plot(x, - np.array(bg_list), color = color_scheme["G"], ls = "--", label = "to Grid")
+axs[1].plot(x, - np.array(bc_list), color = color_scheme["C"], ls = "--", label = "to Consumer")
+axs[1].set_title("Input & Output")
 axs[1].set_ylabel("kW")
 axs[1].set_xlabel("Time")
 axs[1].legend()
-# Output
-axs[2].plot(x, bg_list, color = color_scheme["G"], label = "to Grid")
-axs[2].plot(x, bc_list, color = color_scheme["C"], label = "to Consumer")
-axs[2].set_title("Output")
-axs[2].set_ylabel("kW")
-axs[2].set_xlabel("Time")
-axs[2].legend()
 fig.autofmt_xdate()
 fig.suptitle(pretitle + "Battery")
 fig.savefig(folder_plots + "battery.svg")
 
-# Selling and buying
+
+# Battery
 x = input_data["time"]
+fig, axs = plt.subplots(1, 2, figsize = (2*5, 5))
+# Input & output
+axs[0].plot(x, -np.array(gb_list), color = color_scheme["B"], ls = "--", label = "to Battery")
+axs[0].plot(x, -np.array(gc_list), color = color_scheme["C"], ls = "--", label = "to Consumer")
+axs[0].plot(x, np.array(pvg_list), color = color_scheme["PV"], label = "from PV")
+axs[0].plot(x, np.array(bg_list), color = color_scheme["B"], label = "from Battery")
+axs[0].set_title("Input & output")
+axs[0].set_ylabel("kW")
+axs[0].set_xlabel("Time")
+axs[0].legend()
+# Selling and buying
 sell = np.array(pvg_list) + np.array(bg_list)
 buy = np.array(gb_list) + np.array(gc_list) 
 labels = ["Buy", "Sell"]
-fig, ax = plt.subplots()
-ax.plot(x, buy, color = 'r', label = labels[0])
-ax.plot(x, sell, color = 'g', label = labels[1])
-ax.set_title(pretitle + "Do we buy or do we sell?")
-ax.set_xlabel("Time")
+axs[1].plot(x, buy, color = 'r', label = labels[0])
+axs[1].plot(x, sell, color = 'g', label = labels[1])
+axs[1].set_title("Do we buy or do we sell?")
+axs[1].set_xlabel("Time")
+axs[1].set_ylabel("kW")
+axs[1].legend()
 fig.autofmt_xdate()
-ax.set_ylabel("kWh")
-plt.legend()
-fig.savefig(folder_plots + "buy_or_sell.svg")
-
-# Grid
-fig, axs = plt.subplots(1, 2, figsize = (2*5, 5))
-output_data.plot(x = "time", y = ["grid to battery", "grid to consumer"], color = [color_scheme["B"], color_scheme["C"]], ylabel = "kW", title = "Grid output", ax = axs[0])
-output_data.plot(x = "time", y = ["pv to grid", "battery to grid"], color = [color_scheme["PV"], color_scheme["B"]], ylabel = "kW", title = "Grid input", ax = axs[1])
 fig.suptitle(pretitle + "Grid")
 fig.savefig(folder_plots + 'grid.svg')
 

@@ -42,7 +42,7 @@ var add_battery {t in T} binary;	# Decision variable on whether we add to the ba
 var battery_capacity {t in T};		# Battery capacity at time t
 
 # define auxiliary variables
-#--------------------------
+# --------------------------
 var gc {t in T} = gc_n[t]*packet_size;
 var bg {t in T} = bg_n[t]*packet_size;
 var gb {t in T} = gb_n[t]*packet_size;
