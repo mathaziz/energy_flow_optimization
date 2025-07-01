@@ -17,7 +17,6 @@ The implementation is done in Python 3 and uses the following libraries: numpy, 
 3. **Install Python Packages**:
 
    ```bash
-   conda create --name fraunhofer_iee python=3.12
    conda install numpy matplotlib pandas conda-forge::amplpy
     ```
 4. To use AMPL, you will need a license. If you do not have one yet, please visit the [AMPL website](https://portal.ampl.com/user/ampl/request/amplce/trial) to get a Community Edition, which is sufficient to run the programs.
@@ -40,7 +39,7 @@ To run the program, follow these steps:
     ```bash
     python3 launch_partA.py
     ```
-This script launches a Python program `energy_flow_optimization.py` situated in the root folder. The program is common to all Parts and the script provides the necessay options during launch namely which Part to launch).
+This script launches a Python program `energy_flow_optimization.py` situated in the root folder. The program is common to all Parts and the script provides the necessay options during launch (namely which Part to launch).
 
 4. **Review Outputs**: Ensure that the program was executed correctly by checking the output message generated and the plots saved into the `plots/` folder. The program generates several plots that visualize 1) the distribution of the PV output, 2) battery charge, 3) grid contribution, and 4) the energy mix provided to the consumer.
 
