@@ -2,23 +2,23 @@
 
 This repository provides an example of Energy Flow Optimization, where we optimize energy flows in a system consisting of a photovoltaic (PV) system, an electrical battery, a connection to the external electrical grid, and a consumer. The objective is to meet the predicted electrical energy consumption while minimizing costs.
 
-The project is part of a technical task for an interview process with [hymate](https://www.hymate.com/). The problem statement can be found in the `instructions_hymate.pdf` file, and the data for the problem instance is in the `test_data.xlsx` file.
+The project is part of a technical task for an interview process with [hymate](https://www.hymate.com/). The problem statement can be found in the `instructions.pdf` file, and the data for the problem instance is in the `test_data.xlsx` file.
 
 ## Solutions
 
 Two solutions to the problem are provided:
 
-1. **hymate**: The original solution solved using [Pyomo](https://www.pyomo.org/).
-2. **Fraunhofer IEE**: Another implementation of the solution using [AMPL](https://ampl.com/).
+1. **Pyomo**: The original solution solved using [Pyomo](https://www.pyomo.org/).
+2. **AMPL**: Another implementation of the solution using [AMPL](https://ampl.com/).
 
 ## Files
 
 In the root directory, you can find the following files and directories:
 
-- `fraunhofer_iee/`: The folder containing the **Fraunhofer IEE** solution.
-- `hymate/`: The folder containing the **hymate** solution.
+- `pyomo/`: The folder containing the **Pyomo** solution.
+- `ampl/`: The folder containing the **AMPL** solution.
 - `latex/`: The LaTeX files for the reports found in the solution folders.
-- `instructions_hymate.pdf`: Problem statement and details of the technical task.
+- `instructions.pdf`: Problem statement and details of the technical task.
 - `license.txt`: The license of the project.
 - `README.md`: This file.
 - `test_data.xlsx`: Data for the problem instance.
@@ -42,4 +42,4 @@ For any questions or feedback, please feel free to reach out:
 
 ## Acknowledgments
 
-The problem statement and instructions in `instructions_hymate.pdf`, and the data in `test_data.xlsx`, are the property of [hymate](https://www.hymate.com/) and are reproduced here with permission.
+The problem statement and instructions in `instructions.pdf`, and the data in `test_data.xlsx`, are the property of [hymate](https://www.hymate.com/) and are reproduced here with permission.
